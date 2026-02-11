@@ -5,10 +5,17 @@ using Console = System.Console;
 
 Console.WriteLine("--TP Design Pattern--");
 
+var subject = new Subject();
+subject.AddObserver(new ElfObserver("Elf 1"));
+subject.AddObserver(new ElfObserver("Elf 2"));
+
 Factory factory = new ToyFactory();
 
 var toy = factory.CreateToy(ToyFactory.ToyType.Console);
 var toy2 = factory.CreateToy(ToyFactory.ToyType.ActionFigure);
+
+subject.NotifyObservers($"A new toy was created: {toy.GetDescription()} !!");
+subject.NotifyObservers($"A new toy was created: {toy2.GetDescription()} !!");
 
 Console.WriteLine("\n-Before Decorators-");
 Console.WriteLine(toy.GetDescription());
