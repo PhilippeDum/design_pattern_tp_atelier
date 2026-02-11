@@ -2,8 +2,5 @@
 
 public class Console : IToy
 {
-    public void GetDescription()
-    {
-        System.Console.WriteLine("C'est une console");
-    }
+    public string GetDescription() => "C'est une console";
 }

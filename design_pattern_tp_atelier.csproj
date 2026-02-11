@@ -8,9 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Behavioral\Observers\" />
       <Folder Include="Creational\Builders\" />
-      <Folder Include="Structural\Decorators\" />
     </ItemGroup>
 
 </Project>

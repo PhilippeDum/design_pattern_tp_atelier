@@ -10,5 +10,5 @@ public abstract class Factory : IToy
     
     public abstract IToy CreateToy();
     public abstract IToy CreateToy(ToyType type);
-    public void GetDescription() { }
+    public string GetDescription() => "Description...";
 }

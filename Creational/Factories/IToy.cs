@@ -2,5 +2,5 @@
 
 public interface IToy
 {
-    void GetDescription();
+    string GetDescription();
 }

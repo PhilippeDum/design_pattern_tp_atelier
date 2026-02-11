@@ -2,8 +2,5 @@
 
 public class ActionFigure : IToy
 {
-    public void GetDescription()
-    {
-        System.Console.WriteLine("C'est une figurine");
-    }
+    public string GetDescription() => "C'est une figurine";
 }
