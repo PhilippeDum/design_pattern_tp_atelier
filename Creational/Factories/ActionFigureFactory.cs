@@ -6,9 +6,4 @@ public class ActionFigureFactory : Factory
     {
         return new ActionFigure();
     }
-
-    public override IToy CreateToy(ToyType type)
-    {
-        return new ActionFigure();
-    }
 }

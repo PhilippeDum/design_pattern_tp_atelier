@@ -2,21 +2,16 @@
 
 namespace design_pattern_tp_atelier.Creational.Factories;
 
-public class ToyFactory : Factory
+public class ToyFactory
 {
-    private Dictionary<ToyType, Factory> _factories = new()
+    private Dictionary<Factory.ToyType, Factory> _factories = new()
     {
-        [ToyType.Console] = new ConsoleFactory(),
-        [ToyType.ActionFigure] = new ActionFigureFactory(),
+        [Factory.ToyType.Console] = new ConsoleFactory(),
+        [Factory.ToyType.ActionFigure] = new ActionFigureFactory(),
     };
     private List<IObserver> _observers = new List<IObserver>();
 
-    public override IToy CreateToy()
-    {
-        return null;
-    }
-
-    public override IToy CreateToy(ToyType type)
+    public IToy CreateToy(Factory.ToyType type)
     {
         _factories.TryGetValue(type, out var toy);
 

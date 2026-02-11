@@ -6,9 +6,4 @@ public class ConsoleFactory : Factory
     {
         return new Console();
     }
-
-    public override IToy CreateToy(ToyType type)
-    {
-        return new Console();
-    }
 }

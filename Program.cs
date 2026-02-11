@@ -9,8 +9,8 @@ ToyFactory factory = new ToyFactory();
 factory.AddObserver(new ElfObserver("Elf 1"));
 factory.AddObserver(new ElfObserver("Elf 2"));
 
-var toy = factory.CreateToy(ToyFactory.ToyType.Console);
-var toy2 = factory.CreateToy(ToyFactory.ToyType.ActionFigure);
+var toy = factory.CreateToy(Factory.ToyType.Console);
+var toy2 = factory.CreateToy(Factory.ToyType.ActionFigure);
 
 Console.WriteLine("\n-Before Decorators-");
 Console.WriteLine(toy.GetDescription());
