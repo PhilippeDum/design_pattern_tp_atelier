@@ -10,24 +10,6 @@ ToyFactory factory = new ToyFactory();
 factory.AddObserver(new ElfObserver("Elf 1"));
 factory.AddObserver(new ElfObserver("Elf 2"));
 
-var toy = factory.CreateToy(Factory.ToyType.PS5);
-var toy2 = factory.CreateToy(Factory.ToyType.ActionFigure);
-
-toys.Add(toy);
-toys.Add(toy2);
-
-Console.WriteLine("\n-Before Decorators-");
-Console.WriteLine(toy.GetDescription());
-Console.WriteLine(toy2.GetDescription());
-
-toy = new WrappingPaperDecorator(toy);
-toy2 = new RibbonDecorator(toy2);
-toy2 = new WrappingPaperDecorator(toy2);
-
-Console.WriteLine("\n-After Decorators-");
-Console.WriteLine(toy.GetDescription());
-Console.WriteLine(toy2.GetDescription());
-
 Menu();
 
 void Menu()
@@ -39,11 +21,12 @@ void Menu()
         Console.WriteLine("1. Show all toys");
         Console.WriteLine("2. Add toy");
         Console.WriteLine("3. Show Observer Log");
+        Console.WriteLine("4. Add decoration");
         Console.WriteLine("0. Quit");
         Console.Write("Option: ");
         option = int.Parse(Console.ReadLine());
 
-        if (option < 0 || option > 3) continue;
+        if (option < 0 || option > 4) continue;
 
         if (option == 0)
         {
@@ -62,6 +45,9 @@ void Menu()
             case 3:
                 ShowObserverLog();
                 break;
+            case 4:
+                AddDecoration();
+                break;
             default:
                 return;
         }
@@ -70,7 +56,7 @@ void Menu()
 
 void ShowAllToys()
 {
-    Console.WriteLine("1. Show all toys");
+    Console.WriteLine("\n1. Show all toys");
     foreach (var toy in toys)
     {
         Console.WriteLine(toy.GetDescription());
@@ -79,14 +65,14 @@ void ShowAllToys()
 
 void AddToy()
 {
-    Console.WriteLine("2. Add toy");
+    Console.WriteLine("\n2. Add toy");
     Console.WriteLine("> 0. PS5");
     Console.WriteLine("> 1. PS4");
     Console.WriteLine("> 2. ActionFigure");
     Console.Write("Enter a toy type index : ");
     int typeIndex = int.Parse(Console.ReadLine());
     
-    if (typeIndex < 0 || typeIndex > factory.Observers.Count - 1) return;
+    if (typeIndex < 0 || typeIndex > 2) return;
 
     Factory.ToyType type = typeIndex switch
     {
@@ -103,7 +89,7 @@ void AddToy()
 
 void ShowObserverLog()
 {
-    Console.WriteLine("3. Show Observer Log");
+    Console.WriteLine("\n3. Show Observer Log");
     for (var i = 0; i < factory.Observers.Count; i++)
     {
         var observer = factory.Observers[i];
@@ -120,4 +106,34 @@ void ShowObserverLog()
     {
         Console.WriteLine($"{i}. {selectedObserver.Logs[i]}");
     }
+}
+
+void AddDecoration()
+{
+    Console.WriteLine("\n4. Add decoration");
+
+    for (int i = 0; i < toys.Count; i++)
+    {
+        Console.WriteLine($"{i}. {toys[i].GetDescription()}");
+    }
+    Console.Write("Enter a toy index : ");
+    int toyIndex = int.Parse(Console.ReadLine());
+    
+    if (toyIndex < 0 || toyIndex > toys.Count - 1) return;
+    
+    Console.WriteLine("> 0. Wrapping Paper");
+    Console.WriteLine("> 1. Ribbon");
+    
+    Console.Write("Enter a decoration index : ");
+    int decorationIndex = int.Parse(Console.ReadLine());
+    
+    IToy toy = toys[toyIndex];
+    toy = decorationIndex switch
+    {
+        0 => new WrappingPaperDecorator(toy),
+        1 => new RibbonDecorator(toy),
+        _ => toy
+    };
+    toys[toyIndex] = toy;
+    Console.WriteLine($"Toy updated: {toy.GetDescription()}");
 }

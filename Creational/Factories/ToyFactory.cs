@@ -20,7 +20,6 @@ public class ToyFactory
         if (toy == null) return null;
         
         IToy newToy = toy.CreateToy();
-        Console.WriteLine($"> {type} - {toy} - {newToy} - {newToy.GetDescription()}");
         
         NotifyObservers($"A new toy was created: {newToy.GetDescription()} !!");
 
