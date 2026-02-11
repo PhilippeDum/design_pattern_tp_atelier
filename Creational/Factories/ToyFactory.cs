@@ -6,10 +6,12 @@ public class ToyFactory
 {
     private Dictionary<Factory.ToyType, Factory> _factories = new()
     {
-        [Factory.ToyType.Console] = new ConsoleFactory(),
+        [Factory.ToyType.PS5] = new ConsoleFactory(Factory.ToyType.PS5),
+        [Factory.ToyType.PS4] = new ConsoleFactory(Factory.ToyType.PS4),
         [Factory.ToyType.ActionFigure] = new ActionFigureFactory(),
     };
     private List<IObserver> _observers = new List<IObserver>();
+    public List<IObserver> Observers => _observers;
 
     public IToy CreateToy(Factory.ToyType type)
     {
@@ -18,6 +20,7 @@ public class ToyFactory
         if (toy == null) return null;
         
         IToy newToy = toy.CreateToy();
+        Console.WriteLine($"> {type} - {toy} - {newToy} - {newToy.GetDescription()}");
         
         NotifyObservers($"A new toy was created: {newToy.GetDescription()} !!");
 

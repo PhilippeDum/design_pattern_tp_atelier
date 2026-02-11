@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("design_pattern_tp_atelier")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+780dece784c26a263905728fbc870ea7090ce18b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a0a806a049e7515222b2af4e928fbeec13eb93b1")]
 [assembly: System.Reflection.AssemblyProductAttribute("design_pattern_tp_atelier")]
 [assembly: System.Reflection.AssemblyTitleAttribute("design_pattern_tp_atelier")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

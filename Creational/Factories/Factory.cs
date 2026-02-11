@@ -4,7 +4,8 @@ public abstract class Factory : IToy
 {
     public enum ToyType
     {
-        Console,
+        PS5,
+        PS4,
         ActionFigure,
     }
     
