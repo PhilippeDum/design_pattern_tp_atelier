@@ -5,25 +5,21 @@ using Console = System.Console;
 
 Console.WriteLine("--TP Design Pattern--");
 
-var subject = new Subject();
-subject.AddObserver(new ElfObserver("Elf 1"));
-subject.AddObserver(new ElfObserver("Elf 2"));
-
-Factory factory = new ToyFactory();
+ToyFactory factory = new ToyFactory();
+factory.AddObserver(new ElfObserver("Elf 1"));
+factory.AddObserver(new ElfObserver("Elf 2"));
 
 var toy = factory.CreateToy(ToyFactory.ToyType.Console);
 var toy2 = factory.CreateToy(ToyFactory.ToyType.ActionFigure);
-
-subject.NotifyObservers($"A new toy was created: {toy.GetDescription()} !!");
-subject.NotifyObservers($"A new toy was created: {toy2.GetDescription()} !!");
 
 Console.WriteLine("\n-Before Decorators-");
 Console.WriteLine(toy.GetDescription());
 Console.WriteLine(toy2.GetDescription());
 
-Console.WriteLine("\n-After Decorators-");
 toy = new WrappingPaperDecorator(toy);
 toy2 = new RibbonDecorator(toy2);
 toy2 = new WrappingPaperDecorator(toy2);
+
+Console.WriteLine("\n-After Decorators-");
 Console.WriteLine(toy.GetDescription());
 Console.WriteLine(toy2.GetDescription());
